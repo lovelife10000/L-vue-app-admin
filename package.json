@@ -1,0 +1,22 @@
+{
+  "name": "l-vue-app-admin",
+  "version": "1.0.0",
+  "description": "vue版的app-admin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lovelife10000/L-vue-app-admin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lovelife10000/L-vue-app-admin/issues"
+  },
+  "homepage": "https://github.com/lovelife10000/L-vue-app-admin#readme",
+  "dependencies": {
+    "koa": "^2.5.1"
+  }
+}
