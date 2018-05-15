@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const autoprefixer = require('autoprefixer');
 const dev = process.argv.indexOf( "development" ) !== -1;
 
 module.exports = {
@@ -53,6 +54,41 @@ module.exports = {
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: 'css-loader'
+                })
+            },
+            {
+                test: /\.less$/,
+                include: path.join(__dirname, '..'),
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [{
+                        loader: "css-loader",
+                        options: {
+                            modules: true,
+                            ignoreOrder: true,
+                            localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                            getLocalIdent: (context, localIdentName, localName, options) => {
+                                return localName
+                            }
+                        }
+                    },  {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                autoprefixer({
+                                    browsers: [
+                                        'last 2 versions',
+                                        'Firefox ESR',
+                                        'ie >= 9',
+                                    ],
+                                }),
+                            ],
+                        }
+                    },
+                        {
+                            loader: "less-loader"
+                        }]
+
                 })
             },
             {

@@ -20,7 +20,8 @@ const actions = {
         return commit(GET_ARTICLE_LIST_FAILURE)
       }
       const json = response.data
-      const isMore = !(json.data.length < options.itemsPerPage)
+      // const isMore = !(json.data.length < options.itemsPerPage)
+        const isMore = false
       isAdd
         ? commit(ADD_ARTICLE_LIST,{
           articleList: json.data,
