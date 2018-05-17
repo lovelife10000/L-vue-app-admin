@@ -23,31 +23,31 @@
 
             <Reply v-show="comment.replys.length > 0" :replys="comment.replys" :k="i"></Reply>
 
-             <form v-bind:id="'replyForm' + i" class="new-reply hide" @submit.prevent="submitReply(i,comment._id)"> 
-               <div class="comment-text"> 
+             <form v-bind:id="'replyForm' + i" class="new-reply hide" @submit.prevent="submitReply(i,comment._id)">
+               <div class="comment-text">
                   <textarea v-bind:id="'replyContent' + i"
-                      required 
-                      maxLength="2000" 
+                      required
+                      maxLength="2000"
                       placeholder="写下你的回复…">
-                  </textarea> 
-                  <div> 
+                  </textarea>
+                  <div>
                     <input type="submit" value="发 表" class="btn btn-sm btn-info"></input>
-                  </div> 
+                  </div>
                </div>
              </form>
 
           </div>
-        </div>               
-   
+        </div>
+
     </div>
 
       <form v-if="user" class="new_comment" @submit.prevent="submitComment">
         <div class="comment-text">
-          <textarea 
-            maxLength="2000" 
+          <textarea
+            maxLength="2000"
             required
-            v-model="newCommentContent" 
-            placeholder="写下你的评论…" 
+            v-model="newCommentContent"
+            placeholder="写下你的评论…"
             id="comment_content"></textarea>
           <div>
             <input type="submit" id="comment_submit_btn" value="发 表" class="btn btn-info"></input>
@@ -56,64 +56,64 @@
       </form>
       <div v-else>
         <p class="comment-signin">
-            <button class="btn btn-info" @click.prevent="openLoginModal()">登录后发表评论</button>  
+            <button class="btn btn-info" @click.prevent="openLoginModal()">登录后发表评论</button>
         </p>
       </div>
   </div>
 </template>
 <script>
-import defaultAvatar from 'assets/images/avatar.png'
-import Reply from './reply.vue'
+import defaultAvatar from 'assets/images/avatar.png';
+import Reply from './reply.vue';
 
 export default {
-  props:['commentList','user'],
-  components:{ Reply },
-  data(){
+  props: ['commentList', 'user'],
+  components: { Reply },
+  data() {
     return {
-      defaultAvatar: defaultAvatar,
+      defaultAvatar,
       isReply: false,
-      newCommentContent:''
-    }
+      newCommentContent: '',
+    };
   },
-  methods:{
-    openLoginModal(){
-      this.$parent.openLoginModal()
+  methods: {
+    openLoginModal() {
+      this.$parent.openLoginModal();
     },
-    submitComment(e){
-      this.$parent.handleSubmitComment(this.newCommentContent)
-      this.newCommentContent = ''
+    submitComment(e) {
+      this.$parent.handleSubmitComment(this.newCommentContent);
+      this.newCommentContent = '';
     },
-    submitReply(i,cid){
-      const eleForm = document.getElementById('replyForm' + i)
-      const eleTextarea = document.getElementById('replyContent' + i)
-      this.$parent.handleSubmitReply(cid,eleTextarea.value)
-      eleTextarea.value = ''
-      eleForm.className += ' hide'
+    submitReply(i, cid) {
+      const eleForm = document.getElementById(`replyForm${i}`);
+      const eleTextarea = document.getElementById(`replyContent${i}`);
+      this.$parent.handleSubmitReply(cid, eleTextarea.value);
+      eleTextarea.value = '';
+      eleForm.className += ' hide';
     },
-    showReply(i,nickname){
-      //判断是否登录.未登录则弹出登录框.
-      if(this.user){
-        const eleForm = document.getElementById('replyForm' + i)
-        const eleTextarea = eleForm.getElementsByTagName('textarea')[0]
-        if(eleForm.className.indexOf('hide') != -1){
-          eleForm.className = 'new-reply'
-          eleTextarea.focus()
-          eleTextarea.value = '@' + nickname + ' '
-        }else{
-          eleForm.className += ' hide'
+    showReply(i, nickname) {
+      // 判断是否登录.未登录则弹出登录框.
+      if (this.user) {
+        const eleForm = document.getElementById(`replyForm${i}`);
+        const eleTextarea = eleForm.getElementsByTagName('textarea')[0];
+        if (eleForm.className.indexOf('hide') != -1) {
+          eleForm.className = 'new-reply';
+          eleTextarea.focus();
+          eleTextarea.value = `@${nickname} `;
+        } else {
+          eleForm.className += ' hide';
         }
-      }else{
-        this.$parent.openLoginModal()
+      } else {
+        this.$parent.openLoginModal();
       }
     },
-    goComment(){
-      const eleForm = document.getElementById('comment_content')
-      if(this.user){
-        eleForm.focus()
-      }else{
-        this.$parent.openLoginModal()
+    goComment() {
+      const eleForm = document.getElementById('comment_content');
+      if (this.user) {
+        eleForm.focus();
+      } else {
+        this.$parent.openLoginModal();
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

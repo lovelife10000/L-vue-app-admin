@@ -5,25 +5,25 @@
 </template>
 <script>
 export default {
-  data(){
+  data() {
     return {
-      isShowTop:false
-    }
+      isShowTop: false,
+    };
   },
-  mounted(){
-    window.addEventListener('scroll', this.handleScroll)
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
   },
-  methods:{
-    handleScroll(){
+  methods: {
+    handleScroll() {
       if (window.scrollY > 200) {
-        this.isShowTop = true
+        this.isShowTop = true;
       } else {
-        this.isShowTop = false
+        this.isShowTop = false;
       }
     },
-    gotop(){
-      window.scrollTo(0,0)
-    }
-  }
-}
+    gotop() {
+      window.scrollTo(0, 0);
+    },
+  },
+};
 </script>

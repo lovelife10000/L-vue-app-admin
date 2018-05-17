@@ -15,11 +15,11 @@
 <script>
 
 export default {
-  props:['replys','k'],
-  methods:{
-    showReply(k,nickname){
-      this.$parent.showReply(k,nickname)
-    }
-  }
-}
+  props: ['replys', 'k'],
+  methods: {
+    showReply(k, nickname) {
+      this.$parent.showReply(k, nickname);
+    },
+  },
+};
 </script>

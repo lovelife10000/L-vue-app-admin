@@ -16,16 +16,16 @@
 <script>
 
 
-    export default {
-        components: {},
-        computed: {},
-        data() {
-            return {}
-        },
-        created() {
+export default {
+  components: {},
+  computed: {},
+  data() {
+    return {};
+  },
+  created() {
 
-        },
-        methods: {}
-    }
+  },
+  methods: {},
+};
 
 </script>

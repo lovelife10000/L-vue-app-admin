@@ -8,7 +8,7 @@
 	    </li>
       <li v-for="tag in tagList" :key="tag._id">
         <a :class="{'active':(options.tagId == tag._id)}" @click.prevent="changeTag(tag._id)" href="javascript:;">{{tag.name}}</a>
-      </li>        
+      </li>
 		  <li>
 		    <img v-show="isFetching" class="loader-tiny" :src="loadingImg" alt="Tiny">
 		  </li>
@@ -16,22 +16,22 @@
 </template>
 
 <script>
-import tiny from 'assets/images/tiny.gif'
+import tiny from 'assets/images/tiny.gif';
 
 export default {
-  props: ['tagList','options','isFetching'],
-  data(){
+  props: ['tagList', 'options', 'isFetching'],
+  data() {
     return {
-      loadingImg: tiny
-    }
+      loadingImg: tiny,
+    };
   },
-  methods:{
-    changeSort(sortName){
-      this.$parent.handleChange({'currentPage':1,'sortName':sortName,'tagId':''})
+  methods: {
+    changeSort(sortName) {
+      this.$parent.handleChange({ currentPage: 1, sortName, tagId: '' });
     },
-    changeTag(tagId){
-      this.$parent.handleChange({'currentPage':1,'sortName':'','tagId':tagId})
-    }
-  }
-}
+    changeTag(tagId) {
+      this.$parent.handleChange({ currentPage: 1, sortName: '', tagId });
+    },
+  },
+};
 </script>

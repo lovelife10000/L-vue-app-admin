@@ -5,7 +5,7 @@
 				<img :src="article.images[0].url + '-100x100'"></img>
 			</router-link>
 			<div>
-				<p class="list-top">               
+				<p class="list-top">
 				<span class="time">{{ article.publish_time | customTime }}</span>
 				</p>
 				<h4 class="title">
@@ -15,7 +15,7 @@
 				</h4>
 				<div class="list-footer">
 					<span>阅读 {{article.visit_count}}</span>
-					<span> · 评论 {{article.comment_count}}</span>        
+					<span> · 评论 {{article.comment_count}}</span>
 					<span> · 喜欢 {{article.like_count}}</span>
 				</div>
 			</div>
@@ -26,6 +26,6 @@
 
 <script>
 export default {
-  props: ['articleList']
-}
+  props: ['articleList'],
+};
 </script>

@@ -14,37 +14,37 @@
 </template>
 
 <script>
-import snsloginbtns from './snsLogin'
-import { mapState,mapActions } from 'vuex'
-import { modal } from 'vue-strap'
+import snsloginbtns from './snsLogin';
+import { mapState, mapActions } from 'vuex';
+import { modal } from 'vue-strap';
 
 export default {
-  components:{
+  components: {
     modal,
-    snsloginbtns
+    snsloginbtns,
   },
   computed: {
     ...mapState({
-      logins: ({logins}) => logins.items     
-    })
+      logins: ({ logins }) => logins.items,
+    }),
   },
-  data(){
+  data() {
     return {
-      showLoginModal:false
-    }
+      showLoginModal: false,
+    };
   },
-  created () {
-    if(this.logins.length < 1){
-      this.getSnsLogins()
+  created() {
+    if (this.logins.length < 1) {
+      this.getSnsLogins();
     }
   },
   methods: {
     ...mapActions([
-      'getSnsLogins'
-    ]),    
-    showModal(){
-      this.showLoginModal = true
-    }
-  }
-}
+      'getSnsLogins',
+    ]),
+    showModal() {
+      this.showLoginModal = true;
+    },
+  },
+};
 </script>

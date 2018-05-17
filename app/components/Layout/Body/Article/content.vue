@@ -5,12 +5,12 @@
       <span class="views-count">阅读{{articleDetail.visit_count}}</span>
       <span class="comments-count">评论{{articleDetail.comment_count}}</span>
       <span class="likes-count">喜欢{{articleDetail.like_count}}</span>
-    </div> 
+    </div>
     <div class="markdown-content" v-html="articleDetail.content"></div>
   </div>
 </template>
 <script>
 export default {
-  props:['articleDetail']
-}
+  props: ['articleDetail'],
+};
 </script>

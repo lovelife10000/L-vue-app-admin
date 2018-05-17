@@ -10,6 +10,6 @@
 </template>
 <script>
 export default {
-  props:['prevArticle','nextArticle']
-}
+  props: ['prevArticle', 'nextArticle'],
+};
 </script>

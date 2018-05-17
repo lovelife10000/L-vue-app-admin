@@ -25,42 +25,43 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import { Validator } from 'vee-validate'
+import { mapState, mapActions } from 'vuex';
+import { Validator } from 'vee-validate';
+
 export default {
   data() {
     return {
-      mdNickname: null
-    }
+      mdNickname: null,
+    };
   },
   computed: {
     ...mapState({
-      nickname: ({auth}) => auth.user && auth.user.nickname || '',
+      nickname: ({ auth }) => auth.user && auth.user.nickname || '',
     }),
     newNickname: {
-      get () {
-        return this.mdNickname === null?this.nickname:this.mdNickname
+      get() {
+        return this.mdNickname === null ? this.nickname : this.mdNickname;
       },
-      set (value) {
-        this.mdNickname = value || ''
-      }
-    }    
+      set(value) {
+        this.mdNickname = value || '';
+      },
+    },
   },
-  created(){
-    if(!this.nickname){
-      this.getUserInfo()
+  created() {
+    if (!this.nickname) {
+      this.getUserInfo();
     }
   },
   methods: {
     ...mapActions([
       'updateUser',
-      'getUserInfo'
-    ]),  
+      'getUserInfo',
+    ]),
     mdUser() {
-      if(this.newNickname){
-        this.updateUser({ nickname: this.newNickname })
+      if (this.newNickname) {
+        this.updateUser({ nickname: this.newNickname });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

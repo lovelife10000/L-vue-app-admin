@@ -17,59 +17,57 @@
 <script>
 
 
+import { mapActions, mapState } from 'vuex';
 
-    import {mapActions, mapState} from 'vuex'
+const appConfig = require('config/app');
 
-    const appConfig = require('config/app')
+export default {
+  data() {
+    return {
+      breadcrumb: appConfig.breadcrumb,
+    };
+  },
 
-    export default {
-        data: function () {
-            return {
-                breadcrumb: appConfig.breadcrumb
-            }
-
-        },
-
-        components: {},
-        computed: {
-            ...mapState({
-                indexImg: ({globalVal}) => globalVal.indexImg,
-                tagList: ({tagList}) => tagList.items,
-                options: ({options}) => options.item,
-                articleList: ({articleList}) => articleList.items,
-                isMore: ({articleList}) => articleList.isMore,
-                isFetching: ({articleList}) => articleList.isFetching
-            })
-        },
-        beforeCreate() {
-            debugger
-        },
-        mounted(){
-            debugger
-        },
-        created() {
-            debugger
-            if (this.indexImg === '') {
-                this.getIndexImage()
-            }
-            if (this.tagList.length < 1) {
-                this.getTagList()
-            }
-            if (this.articleList.length < 1) {
-                this.getArticleList({options: this.options})
-            }
-        },
-        methods: {
-            ...mapActions([
-                'getIndexImage',
-                'getTagList',
-                'changeOptions',
-                'getArticleList'
-            ]),
-            handleChange(options, isAdd = false) {
-                this.changeOptions(options)
-                this.getArticleList({options: this.options, isAdd: isAdd})
-            }
-        }
+  components: {},
+  computed: {
+    ...mapState({
+      indexImg: ({ globalVal }) => globalVal.indexImg,
+      tagList: ({ tagList }) => tagList.items,
+      options: ({ options }) => options.item,
+      articleList: ({ articleList }) => articleList.items,
+      isMore: ({ articleList }) => articleList.isMore,
+      isFetching: ({ articleList }) => articleList.isFetching,
+    }),
+  },
+  beforeCreate() {
+    debugger;
+  },
+  mounted() {
+    debugger;
+  },
+  created() {
+    debugger;
+    if (this.indexImg === '') {
+      this.getIndexImage();
     }
+    if (this.tagList.length < 1) {
+      this.getTagList();
+    }
+    if (this.articleList.length < 1) {
+      this.getArticleList({ options: this.options });
+    }
+  },
+  methods: {
+    ...mapActions([
+      'getIndexImage',
+      'getTagList',
+      'changeOptions',
+      'getArticleList',
+    ]),
+    handleChange(options, isAdd = false) {
+      this.changeOptions(options);
+      this.getArticleList({ options: this.options, isAdd });
+    },
+  },
+};
 </script>

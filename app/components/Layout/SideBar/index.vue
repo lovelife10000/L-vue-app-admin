@@ -21,7 +21,6 @@
                     <MenuItem v-for="item3 in item2.children" name="___">{{item3.name}}</MenuItem>
 
 
-
                 </Submenu>
                 <MenuItem v-if="item4.children.length<1" v-for="item4 in item.children"  name="__">{{item4.name}}
 
@@ -37,22 +36,22 @@
 </template>
 
 <script>
-    const appConfig = require('config/app')
+const appConfig = require('config/app');
 
-    export default {
-        data() {
-            return {
-                isCollapsed: false,
-                menu: appConfig.menu
-            };
-        },
-        computed: {
-            menuitemClasses: function () {
-                return [
-                    'menu-item',
-                    this.isCollapsed ? 'collapsed-menu' : ''
-                ]
-            }
-        },
-    }
+export default {
+  data() {
+    return {
+      isCollapsed: false,
+      menu: appConfig.menu,
+    };
+  },
+  computed: {
+    menuitemClasses() {
+      return [
+        'menu-item',
+        this.isCollapsed ? 'collapsed-menu' : '',
+      ];
+    },
+  },
+};
 </script>

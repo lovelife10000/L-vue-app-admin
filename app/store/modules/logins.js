@@ -1,39 +1,39 @@
-import api from '../../api'
+import api from '../../api';
 import {
   SUCCESS_GET_SNSLOGINS,
-  FAILURE_GET_SNSLOGINS
-} from 'config/types'
+  FAILURE_GET_SNSLOGINS,
+} from 'config/types';
 
-const state = {items:[]}
+const state = { items: [] };
 
 export const getSnsLogins = ({ commit }) => {
 
-}
+};
 const actions = {
-  getSnsLogins({ commit }){
-    api.getSnsLogins().then(response => {
-      if(!response.ok){
-        return commit(FAILURE_GET_SNSLOGINS)
+  getSnsLogins({ commit }) {
+    api.getSnsLogins().then((response) => {
+      if (!response.ok) {
+        return commit(FAILURE_GET_SNSLOGINS);
       }
-      commit(SUCCESS_GET_SNSLOGINS, response.data.data)
-    }, response => {
-      commit(FAILURE_GET_SNSLOGINS)
-    })
-  }
-}
+      commit(SUCCESS_GET_SNSLOGINS, response.data.data);
+    }, (response) => {
+      commit(FAILURE_GET_SNSLOGINS);
+    });
+  },
+};
 
 
 const mutations = {
-  [FAILURE_GET_SNSLOGINS](state){
-    state.items = []
+  [FAILURE_GET_SNSLOGINS](state) {
+    state.items = [];
   },
-  [SUCCESS_GET_SNSLOGINS](state,data){
-    state.items = data
-  }
-}
+  [SUCCESS_GET_SNSLOGINS](state, data) {
+    state.items = data;
+  },
+};
 
 export default {
   state,
   actions,
-  mutations
-}
+  mutations,
+};

@@ -1,27 +1,28 @@
-import Cookies from 'universal-cookie'
-const cookies = new Cookies()
-import { CookieDomain } from 'config/app'
-let cookieConfig = {}
-if(CookieDomain !== ''){
-  cookieConfig = { domain: CookieDomain } //path:'/',maxAge:365*24*60*60
+import Cookies from 'universal-cookie';
+import { CookieDomain } from 'config/app';
+
+const cookies = new Cookies();
+let cookieConfig = {};
+if (CookieDomain !== '') {
+  cookieConfig = { domain: CookieDomain }; // path:'/',maxAge:365*24*60*60
 }
 
-export function saveCookie(name,value) {
-  cookies.set(name, value, cookieConfig)
+export function saveCookie(name, value) {
+  cookies.set(name, value, cookieConfig);
 }
 
 export function getCookie(name) {
-  return cookies.get(name)
+  return cookies.get(name);
 }
 
 export function removeCookie(name) {
-  cookies.remove(name, cookieConfig)
+  cookies.remove(name, cookieConfig);
 }
 
 export function signOut() {
-  cookies.remove('token', cookieConfig)
+  cookies.remove('token', cookieConfig);
 }
 
 export function isLogin() {
-  return !!cookies.get('token')
+  return !!cookies.get('token');
 }

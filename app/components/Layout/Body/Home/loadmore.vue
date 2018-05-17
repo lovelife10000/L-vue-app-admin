@@ -11,12 +11,12 @@
 
 <script>
 export default {
-  props:['isFetching','isMore','options'],
-  methods:{
-    addData(){
-      let currentPage = this.options.currentPage
-      this.$parent.handleChange({currentPage:++currentPage},true)
-    }
-  }
-}
+  props: ['isFetching', 'isMore', 'options'],
+  methods: {
+    addData() {
+      let currentPage = this.options.currentPage;
+      this.$parent.handleChange({ currentPage: ++currentPage }, true);
+    },
+  },
+};
 </script>
