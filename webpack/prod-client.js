@@ -5,14 +5,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-const dev = process.argv.indexOf('development') !== -1;
+
 
 module.exports = {
     performance: {
         hints: process.env.NODE_ENV === 'production' ? 'warning' : false,
     },
-
-    mode: dev ? 'development' : 'production',
+    mode: 'production',
     entry: {
         bundle: [path.join(__dirname, '../client/client.js')],
     },
@@ -22,25 +21,24 @@ module.exports = {
         chunkFilename: '[name].js',
         publicPath: '/',
     },
-
     plugins: [
         new VueLoaderPlugin(),
         new ExtractTextPlugin({
-            filename: 'style.css',
+            filename: '[hash:8].style.css',
             disable: false,
             allChunks: true,
         }),
-        // new HtmlWebpackPlugin({
-        //     favicon: path.join(__dirname, '../app/assets/images/favicon.ico'),
-        //     title: '',
-        //     template: path.join(__dirname, '../app/assets/index.ejs'), // 模板文件
-        //     inject: 'body',
-        //     hash: false, // 为静态资源生成hash值
-        //     minify: { // 压缩HTML文件
-        //         removeComments: false, // 移除HTML中的注释
-        //         collapseWhitespace: false, // 删除空白符与换行符
-        //     },
-        // }),
+        new HtmlWebpackPlugin({
+            favicon: path.join(__dirname, '../app/assets/images/favicon.ico'),
+            title: '',
+            template: path.join(__dirname, '../app/assets/index.ejs'), // 模板文件
+            inject: 'body',
+            hash: false, // 为静态资源生成hash值
+            minify: { // 压缩HTML文件
+                removeComments: false, // 移除HTML中的注释
+                collapseWhitespace: false, // 删除空白符与换行符
+            },
+        }),
     ],
     module: {
         rules: [
