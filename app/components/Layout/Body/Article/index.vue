@@ -13,7 +13,7 @@ import ArtickeContent from './content.vue';
 import Comment from './comment.vue';
 import Prenext from './prenext.vue';
 import Like from './like.vue';
-import Loginmodal from '../Login/modal.vue';
+import Loginmodal from '../../../Login/modal.vue';
 import Scrolltop from '../Scrolltop/index.vue';
 import { mapState, mapActions } from 'vuex';
 

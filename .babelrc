@@ -14,6 +14,7 @@
     ]
   ],
   "plugins": [
+    "babel-polyfill",
     "transform-runtime",
     "transform-object-rest-spread",
     "syntax-dynamic-import"

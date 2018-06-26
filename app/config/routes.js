@@ -7,6 +7,7 @@ const Login = () => import(/* webpackChunkName: "Login" */ 'components/Login/ind
 const NotFound = () => import(/* webpackChunkName: "NotFound" */ 'components/NotFound');
 const AllUserGroups = () => import(/* webpackChunkName: "AllUserGroups" */ 'components/Layout/Body/UserManage/AllUserGroups');
 const AddUserGroup = () => import(/* webpackChunkName: "AddUserGroup" */ 'components/Layout/Body/UserManage/AddUserGroup');
+const Article = () => import(/* webpackChunkName: "Article" */ 'components/Layout/Body/Article');
 
 Vue.use(Router);
 
@@ -40,7 +41,11 @@ const router = new Router({
             name: 'allUserGroups',
             component: AllUserGroups,
         },
-
+        {
+            path: '/userManage/article',
+            name: 'article',
+            component: Article,
+        },
 
 
         {

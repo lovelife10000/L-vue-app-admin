@@ -9,6 +9,7 @@
         </Breadcrumb>
         <Card>
             <div style="height: 600px">Content</div>
+            <div>{{abc}}</div>
         </Card>
     </Content>
 
@@ -39,6 +40,7 @@ export default {
       isFetching: ({ articleList }) => articleList.isFetching,
     }),
   },
+    props:['abc'],
   beforeCreate() {
     debugger;
   },

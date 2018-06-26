@@ -34,6 +34,7 @@ export default {
     },
   },
   components: { HeaderBar, SideBar },
+
 };
 </script>
 
